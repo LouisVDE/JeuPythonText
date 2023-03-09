@@ -19,8 +19,8 @@ def start():
     ft_NAME()
 
 def ft_NAME():
-    clear()
     while True:
+        clear()
         pseudo = input("Entrez votre nom : ")
         # Vérifier si le nom ne contient que des lettres et des espaces
         if not re.match("^[a-zA-Z ]+$", pseudo):
@@ -31,9 +31,14 @@ def ft_NAME():
         choice = ft_choice()
         if choice == 1:
             #DEBUT DE JEU
-            return
-        elif choice == 0:
-            ft_NAME()
+            return pseudo
+        elif choice == 2:
+            # Demander à l'utilisateur de saisir un nouveau nom
+            continue
+        else:
+            # Gérer les autres choix d'entrée
+            print("Choix invalide. Veuillez réessayer.\n")
+            continue
 
 def ft_choice():
     while True:
