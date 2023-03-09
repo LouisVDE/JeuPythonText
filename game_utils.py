@@ -1,5 +1,6 @@
 import os
 import time
+import re
 
 def clear():
     os.system('cls')
@@ -15,20 +16,24 @@ def start():
     print("CE JEU NE DISPOSE PAS DE SYSTEME DE SAUVEGARDE")
     time.sleep(3)
     clear()
-    ftl_NAME()
+    ft_NAME()
 
 def ft_NAME():
-    choice = 0
     clear()
-    pseudo = input("Entrez votre nom : ")
-    clear()
-    print(pseudo+"? Etes vous sur ?")
-    choice = ft_choice()
-    if choice == 1:
-        #DEBUT DE JEU
-        return
-    elif choice == 0:
-        _NAME()
+    while True:
+        pseudo = input("Entrez votre nom : ")
+        # Vérifier si le nom ne contient que des lettres et des espaces
+        if not re.match("^[a-zA-Z ]+$", pseudo):
+            print("Erreur : le nom ne doit contenir que des lettres et des espaces\n")
+            continue
+        clear()
+        print(pseudo+"? Etes vous sur ?")
+        choice = ft_choice()
+        if choice == 1:
+            #DEBUT DE JEU
+            return
+        elif choice == 0:
+            ft_NAME()
 
 def ft_choice():
     while True:
